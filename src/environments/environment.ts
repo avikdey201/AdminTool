@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrls: {
+    local_dev: 'http://localhost:12001'
+    //local_dev: 'http://172.16.85.42:12001'
+  },
+  api_endpoints: {
+    submitAdminDetails: '/devops/adminSubmit'
+  }
 };
 
 /*
