@@ -1,4 +1,4 @@
-<div class="bgd-main">
+<div class="bgd-main" *ngIf="adminForm">
   <div class="deloitte-logo">
       <span><img src="../assets/images/deloitte_logo.svg" alt="Deloitte ." /></span>
   </div>
@@ -8,25 +8,30 @@
       <div class="bgd-2">
       </div>
   </div>
-  <form [formGroup]="adminForm">
-  <div class="admin-form">
+  <form [formGroup]="adminForm" >
+  <div class="admin-form" >
       <div class="row">
           <input type="text" class="form-control" formControlName = "userName" placeholder="User Name">
       </div>
+      <div class="row warning" *ngIf="!adminForm.controls.userName.valid && adminForm.controls.userName.touched" >Username Required</div>
       <div class="row">
         <input type="text" class="form-control" formControlName = "userEmailId" placeholder="User EmailId">
+        <div class="row warning" *ngIf="!adminForm.controls.userEmailId.valid && adminForm.controls.userEmailId.touched">EmailId Required</div>
     </div>
       <div class="row">
           <input type="password" class="form-control" formControlName = "password" placeholder="User Password">
-      </div>
+          <div class="row warning" *ngIf="!adminForm.controls.password.valid && adminForm.controls.password.touched">Password Required</div>
+          </div>
       <div class="row">
         <input type="text" class="form-control" formControlName = "evaluatorName" placeholder="Evaluator Name">
+        <div class="row warning" *ngIf="!adminForm.controls.evaluatorName.valid && adminForm.controls.evaluatorName.touched" >Evaluator Required</div>
     </div>
     <div class="row">
       <input type="text" class="form-control" formControlName = "evaluatorEmailId" placeholder="Evaluator EmailId">
-  </div>
+      <div class="row warning" *ngIf="!adminForm.controls.evaluatorEmailId.valid && adminForm.controls.evaluatorEmailId.touched">Evaluator EmailId Required</div>
+    </div>
       <div class="row">
-          <button mat-button  (click)="login()" >
+          <button mat-button  (click)="submit()" >
               Submit</button>
               <!-- <app-selection-component [loginData]=loginRes ></app-selection-component> -->
       </div>

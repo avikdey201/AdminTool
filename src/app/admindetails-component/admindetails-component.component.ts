@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AdminRequestModel } from '../../data-model/AdminRequestModel';
 import { DataProviderService } from '.././services/data-provider.service';
 import { AdminSubmitResponseModel } from '../../data-model/AdminSubmitResponseModel'
+import { DialogData } from 'src/data-model/dialogData.model';
+import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'app-admindetails-component',
@@ -18,6 +20,7 @@ export class AdmindetailsComponentComponent implements OnInit {
   constructor(private router: Router,
     private fb: FormBuilder,
       private dataProviderService: DataProviderService,
+      private dialogService: DialogService
      ) { }
     adminReq: AdminRequestModel = new AdminRequestModel();
     adminRes: AdminSubmitResponseModel = new AdminSubmitResponseModel();
@@ -35,10 +38,10 @@ export class AdmindetailsComponentComponent implements OnInit {
     // // }
     this.adminForm = this.fb.group({
       userName: [null, Validators.required],
-      userEmailId: [null, Validators.required],
+      userEmailId: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],
       evaluatorName: [null, Validators.required],
-      evaluatorEmailId: [null, Validators.required],
+      evaluatorEmailId: [null, [Validators.required, Validators.email]],
     });
   }
 
@@ -49,18 +52,19 @@ export class AdmindetailsComponentComponent implements OnInit {
     this.adminReqData.password = this.adminForm.controls.password.value;
     this.adminReqData.evaluatorName = this.adminForm.controls.evaluatorName.value;
     this.adminReqData.evaluatorEmailId = this.adminForm.controls.evaluatorEmailId.value;
-   this.dataProviderService.submitAdminDetails(this.adminReqData).subscribe(
+    this.dataProviderService.submitAdminDetails(this.adminReqData).subscribe(
           (data: AdminSubmitResponseModel) => {
          this.adminRes = data;
          console.log('Service Returned', this.adminRes.message);
-        //  if (this.adminRes.message === 'Data stored properly') {
-        //   const dialogData: DialogData = {dialogType: 'Success',
-        //    dialogTitle: 'Success', dialogContent: 'Proper Data Submitted',
-        //    dialogButtonTexts: ['Close']
-        //   };
-        //   this.dialogService.openDialog(dialogData);
+         if (this.adminRes.message === 'Data stored properly') {
+          const dialogData: DialogData = {dialogType: 'Success',
+           dialogTitle: 'Success', dialogContent: 'Proper Data Submitted',
+           dialogButtonTexts: ['Close']
+          };
+          this.dialogService.openDialog(dialogData);
           
-  });
-}
+  }
+});
 
+}
 }

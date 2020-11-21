@@ -1,8 +1,8 @@
 .admin-form {
     position: absolute;
-    top: 60%;
+    top: 40%;
     left: 50%;
-    bottom: 40%;
+    bottom: 60%;
     right: 50%;
     min-width: 350px;
     min-height: 456px;
@@ -36,7 +36,11 @@
 .bgd-main {
     background-color: #1b1a1ae8;
 }
-
+.warning {
+    color: red;
+    margin-top: 3px !important;
+    margin-bottom: 3px !important;
+}
 img {
     width: 300px;
 }
