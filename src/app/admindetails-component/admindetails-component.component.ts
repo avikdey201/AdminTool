@@ -65,6 +65,7 @@ export class AdmindetailsComponentComponent implements OnInit {
           
   }
 });
+this.adminForm.reset();
 
 }
 }
