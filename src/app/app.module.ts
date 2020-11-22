@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DataProviderService } from './services/data-provider.service';
 import { DialogService } from './services/dialog.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -28,7 +29,9 @@ import { DialogService } from './services/dialog.service';
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
+    NoopAnimationsModule,
   ],
+  entryComponents: [DcodeDialogComponent],
   providers: [DialogService, DataProviderService],
   bootstrap: [AppComponent]
 })

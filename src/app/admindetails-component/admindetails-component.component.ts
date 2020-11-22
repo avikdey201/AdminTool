@@ -56,7 +56,7 @@ export class AdmindetailsComponentComponent implements OnInit {
           (data: AdminSubmitResponseModel) => {
          this.adminRes = data;
          console.log('Service Returned', this.adminRes.message);
-         if (this.adminRes.message === 'Data stored properly') {
+         if (this.adminRes.message === 'User Data inserted properly') {
           const dialogData: DialogData = {dialogType: 'Success',
            dialogTitle: 'Success', dialogContent: 'Proper Data Submitted',
            dialogButtonTexts: ['Close']
