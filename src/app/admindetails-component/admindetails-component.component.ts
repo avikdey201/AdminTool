@@ -62,7 +62,7 @@ export class AdmindetailsComponentComponent implements OnInit {
           //  dialogButtonTexts: ['Close']
           // };
           // this.dialogService.openDialog(dialogData);
-          alert(data.message);
+          alert('Data inserted successfully');
   }
   this.adminForm.reset();
 });
