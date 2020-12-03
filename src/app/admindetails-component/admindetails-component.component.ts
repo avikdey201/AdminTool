@@ -54,18 +54,19 @@ export class AdmindetailsComponentComponent implements OnInit {
     this.adminReqData.evaluatorEmailId = this.adminForm.controls.evaluatorEmailId.value;
     this.dataProviderService.submitAdminDetails(this.adminReqData).subscribe(
           (data: AdminSubmitResponseModel) => {
-         //this.adminRes = data;
+       //  this.adminRes = data;
          console.log('Service Returned', data.message);
-         if (data.message === 'User Data inserted properly') {
+         if (data.message === 'User Data inserted properly') {
           // const dialogData: DialogData = {dialogType: 'Success',
           //  dialogTitle: 'Success', dialogContent: 'Proper Data Submitted',
           //  dialogButtonTexts: ['Close']
           // };
           // this.dialogService.openDialog(dialogData);
           alert(data.message);
-          
   }
   this.adminForm.reset();
 });
+
+
 }
 }
